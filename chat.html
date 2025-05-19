@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Mentoria</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <nav>
+    <a href="index.html">Início</a>
+    <a href="admin.html">Admin</a>
+    <a href="chat.html">Chat</a>
+</nav>
+    <h1>Chat de Mentoria</h1>
+    <div id="chatBox"></div>
+    <input type="text" id="message" placeholder="Digite sua mensagem...">
+    <input type="text" id="userName" placeholder="Digite seu nome (Cliente, Bot ou Gerente)">
+
+    <button onclick="sendMessage()">Enviar</button>
+
+    <script>
+        function loadChatHistory() {
+            fetch('/api/chatHistory')
+                .then(response => response.json())
+                .then(history => {
+                    const chatBox = document.getElementById('chatBox');
+                    chatBox.innerHTML = '';
+                    history.forEach(msg => {
+                        const p = document.createElement('p');
+                        p.textContent = `${msg.timestamp}: ${msg.message}`;
+                        chatBox.appendChild(p);
+                    });
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                });
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+            if (message) {
+                const ws = new WebSocket('ws://localhost:3000');
+                ws.onopen = () => {
+                    ws.send(message);
+                    messageInput.value = '';
+                    ws.close();
+                };
+            }
+        }
+
+        document.getElementById('message').addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') sendMessage();
+        });
+
+        window.onload = () => {
+            loadChatHistory();
+            setInterval(loadChatHistory, 5000);
+        };
+    </script>
+</body>
+</html>

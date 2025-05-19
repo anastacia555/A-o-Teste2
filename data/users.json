@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Anastacia",
+    "email": "anastaciaconstantine@gmail.com",
+    "type": "estudante",
+    "course": "TI",
+    "educationLevel": "graduacao",
+    "id": "1747231063679"
+  },
+  {
+    "name": "ana",
+    "email": "ana@gmail.com",
+    "type": "estudante",
+    "course": "TI",
+    "educationLevel": "pos_graduacao",
+    "id": "1747236163446"
+  },
+  {
+    "name": "asff",
+    "email": "hhf@GMAIL.COM",
+    "type": "estudante",
+    "course": "TI",
+    "educationLevel": "graduacao",
+    "id": "1747293213518"
+  }
+]
