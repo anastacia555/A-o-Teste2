@@ -14,7 +14,7 @@ const authenticate = (req, res, next) => {
 
 // Rota para a página principal (index.html)
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname,));
+    res.sendFile(path.resolve(__dirname,'.'));
 });
 
 // Rota para a página de chat (chat.html)
