@@ -5,7 +5,7 @@ const WebSocket = require('ws');
 const app = express();
 
 // Configurar o diretório público para arquivos estáticos
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, '.')));
 
 // Usar as rotas definidas em routes.js
 app.use('/', routes.router);

@@ -14,17 +14,17 @@ const authenticate = (req, res, next) => {
 
 // Rota para a página principal (index.html)
 router.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '.'));
 });
 
 // Rota para a página de chat (chat.html)
 router.get('/chat', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'chat.html'));
+    res.sendFile(path.resolve(__dirname, '.'));
 });
 
 // Rota para a página de admin (admin.html) com autenticação
 router.get('/admin', authenticate, (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'public', 'admin.html'));
+    res.sendFile(path.resolve(__dirname, '.'));
 });
 
 // Rota para carregar histórico de chat

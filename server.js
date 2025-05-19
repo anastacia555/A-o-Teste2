@@ -8,7 +8,7 @@ const wss = new WebSocket.Server({ server });
 let chatHistory = [];
 let onlineUsers = new Map(); // Mapeia socket => nome
 
-app.use(express.static('public'));
+app.use(express.static());
 
 app.get('/api/chatHistory', (req, res) => {
     res.json(chatHistory);
